@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather App</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body
+  style="background-image: url('https://plus.unsplash.com/premium_photo-1673603988651-99f79e4ae7d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');">
+
+  <nav class="navbar py-0 bg-primary navbar-expand-lg  bg-body-tertiary" data-bs-theme="dark">
+    <div class="container-fluid">
+      <img src="./logo.jpeg" alt="" style="height: 33px; margin-right: 12px; margin-left: 11px; border-radius: 7px;">
+      <a class="navbar-brand" href="#">  
+        <h2 style="color:#1294ab; font-style: italic;">ClimatePulse</h2>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./about.html">About</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Previous Data
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Last one Week</a></li>
+              <li><a class="dropdown-item" href="#">Last one Month</a></li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#">Yesterday</a></li>
+            </ul>
+
+          </li>
+        
+        </ul>
+        <form class="d-flex" role="search">
+          <input id="city" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success" type="submit" id="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+
+
+  <div class="container my-3">
+    <h1 class="my-4 text-center">Weather for <span id="cityName"></span></h1>
+    <main>
+      <div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Temperature</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title"><span id="temp2"></span><small class="text-body-secondary fw-light"><span>&#8451</span></small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Temperature is <span id="temp"></span></li>
+                <li>Min Temperature is <span id="min_temp"></span></li>
+                <li>Max Temperature is <span id="max_temp"></span></li>
+              </ul>
+    
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm">
+            <div class="card-header py-3">
+              <h4 class="my-0 fw-normal">Humidity Info</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title"><span id="humidity2"></span><small class="text-body-secondary fw-light"><span>&#37</span></small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Humidity is <span id="humidity"></span></li>
+                <li>Cloud PCT is <span id="cloud_pct"></span></li>
+                <li>Feels Like <span id="feels_like"></span></li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="card mb-4 rounded-3 shadow-sm ">
+            <div class="card-header py-3 ">
+              <h4 class="my-0 fw-normal">Wind Info</h4>
+            </div>
+            <div class="card-body">
+              <h1 class="card-title pricing-card-title"><span id="wind_speed2"></span><small class="text-body-secondary fw-light"><span>m/s</span></small></h1>
+              <ul class="list-unstyled mt-3 mb-4">
+                <li>Wind Speed is <span id="wind_speed"></span>m/s</li>
+                <li>Wind Degree is <span id="wind_degrees"></span></li>
+                <li>Sunrise time is <span id="sunrise"></span></li>
+                <li>Sunset time is <span id="sunset"></span></li>
+              </ul>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="display-10 text-center text fw-bold mb-4">Weather of other Cities</h2>
+      <div class="container my-2 px-3 py-3">
+        <table class="table table-hover table-bordered">
+          <thead>
+            <tr>
+              <th scope="col"></th>
+              <th scope="col">Temperature</th>
+              <th scope="col">Feels Like</th>
+              <th scope="col">Humidity</th>
+              <th scope="col">Wind Speed</th>
+              
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">Mumbai</th>
+              <td><span id="temp_M"></span>&#8451</td>
+              <td><span id="feels_like_M"></span></td>
+              <td><span id="humidity_M"></span>%</td>
+              <td><span id="wind_speed_M"></span>m/s</td>
+            </tr>
+            <tr>
+              <th scope="row">Delhi</th>
+              <td><span id="temp_d"></span>&#8451</td>
+              <td><span id="feels_like_d"></span></td>
+              <td><span id="humidity_d"></span>%</td>
+              <td><span id="wind_speed_d"></span>m/s</td>
+            </tr>
+            <tr>
+              <th scope="row">Pune</th>
+              <td><span id="temp_p"></span>&#8451</td>
+              <td><span id="feels_like_p"></span></td>
+              <td><span id="humidity_p"></span>%</td>
+              <td><span id="wind_speed_p"></span>m/s</td>
+            </tr>
+            <tr>
+              <th scope="row">Jalna</th>
+              <td><span id="temp_j"></span>&#8451</td>
+              <td><span id="feels_like_j"></span></td>
+              <td><span id="humidity_j"></span>%</td>
+              <td><span id="wind_speed_j"></span>m/s</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+    crossorigin="anonymous"></script>
+    <footer style="text-align: center;
+    padding: 10px;
+    background-color: #212529;
+    color: white;
+  bottom: 0%;
+    width: 100%;">
+      <p>&copy; 2023 ClimatePulse. All rights reserved.</p>
+  </footer>
+</body>
+
+
+</html>
